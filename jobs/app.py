@@ -56,7 +56,9 @@ def review(employer_id):
         title = request.form['title']
         status = request.form['status']
 
-        date = datetime.datetime.now().strftime("%m/%d/%Y")
+        # to pass pluralsight qa the following line needs to be datetime.datetime.now().strftime("%m/%d/%Y")
+        # but to actually run the code without error it has to be datetime.now().strftime("%m/%d/%Y")
+        date = datetime.now().strftime("%m/%d/%Y")
         returnStatus = execute_sql('INSERT INTO review (review, rating, title, date, status, employer_id) VALUES (?, ?, ?, ?, ?, ?)',
         (review, rating, title, date, status, employer_id),commit=True)
 
